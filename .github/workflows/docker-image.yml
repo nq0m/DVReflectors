@@ -12,8 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: prompt/actions-commit-hash@v3
     - name: Print Hash
+      uses: prompt/actions-commit-hash@v3
       id: hash
       run: |
         echo "${{ steps.commit.outputs.short }}"
