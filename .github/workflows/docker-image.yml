@@ -12,10 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Get Hash
+    - uses: prompt/actions-commit-hash@v3
+    - name: Print Hash
       id: hash
-      run: echo "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+      run: echo ${{ steps.commit.outputs.short }}
     - name: Build the Docker image
       run: |
         cd $GITHUB_WORKSPACE/DVReflectors/YSFReflector/docker
-        docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ env.hash }}
+        docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ steps.commit.outputs.short }}
