@@ -1,19 +1,21 @@
-FROM debian:buster-slim AS builder
+FROM debian:bookworm-slim AS builder
 
 RUN apt-get update && \
+    apt-get -y upgrade && \
     apt-get install -y build-essential git
 
 RUN mkdir /code && \
-    git clone https://github.com/g4klx/YSFClients.git /code && \
+    git clone https://github.com/nostar/DVReflectors.git /code && \
     cd /code/YSFReflector/ && \
     make clean all
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 ENV REFLECTOR_NAME set_me
 ENV REFLECTOR_DESCRIPTION set_me
 
 RUN apt-get update && \
+    apt-get -y upgrade && \
     apt-get install -y procps && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     mkdir /app
