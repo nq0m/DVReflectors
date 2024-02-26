@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Get Hash
+      id: hash
+      run: echo "git_hash=${git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+    - name: Build the Docker image
+      run: |
+        cd $GITHUB_WORKSPACE/DVReflectors/YSFReflector/docker
+        docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ env.hash }}
