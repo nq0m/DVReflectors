@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get install -y build-essential git
 
 RUN mkdir /code && \
-    git clone https://github.com/nostar/DVReflectors.git /code && \
+    git clone https://github.com/nq0m/DVReflectors.git /code && \
     cd /code/YSFReflector/ && \
     make clean all
 
