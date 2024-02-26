@@ -22,7 +22,7 @@ jobs:
       run: |
         echo ${{ env.COMMIT_SHORT_SHA }}
         ls -al
-    # - name: Build the Docker image
-    #   run: |
-    #     cd $GITHUB_WORKSPACE/DVReflectors/YSFReflector/docker
-    #     docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ steps.commit.outputs.short }}
+    - name: Build the Docker image
+      run: |
+        cd YSFReflector/docker
+        docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ env.COMMIT_SHORT_SHA }}
