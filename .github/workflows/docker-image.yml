@@ -15,8 +15,10 @@ jobs:
     - uses: prompt/actions-commit-hash@v3
     - name: Print Hash
       id: hash
-      run: echo ${{ steps.commit.outputs.short }}
-    - name: Build the Docker image
       run: |
-        cd $GITHUB_WORKSPACE/DVReflectors/YSFReflector/docker
-        docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ steps.commit.outputs.short }}
+        echo "${{ steps.commit.outputs.short }}"
+        ls -al
+    # - name: Build the Docker image
+    #   run: |
+    #     cd $GITHUB_WORKSPACE/DVReflectors/YSFReflector/docker
+    #     docker build . --file Dockerfile --tag nq0m/ysfreflector:$(date +%Y%m%d)-${{ steps.commit.outputs.short }}
