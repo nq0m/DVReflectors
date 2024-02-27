@@ -7,7 +7,8 @@ RUN apt-get update && \
 RUN mkdir /code && \
     git clone https://github.com/nq0m/DVReflectors.git /code && \
     cd /code/YSFReflector/ && \
-    make clean all
+    make clean all && \
+    sed -i 's/^Debug=0/Debug=1/g' YSFReflector.ini
 
 FROM debian:bookworm-slim
 
