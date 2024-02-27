@@ -21,13 +21,14 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y procps apache2 libapache2-mod-php php-cgi php-common php && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    mkdir -p /app/logs
+    mkdir -p /app/logs && \
+    mkdir -p /var/www/html/config
 
 COPY --from=builder /code/YSFReflector/YSFReflector.ini /code/YSFReflector/YSFReflector /app/
 COPY --from=builder /dashboard/favicon.ico /dashboard/index.php /dashboard/txinfo.php /dashboard/version.php /var/www/html
 COPY --from=builder /dashboard/include /var/www/html/include
 COPY entrypoint.sh /entrypoint.sh
-COPY config.php /var/www/html/config
+COPY config.php /var/www/html/config/
 
 EXPOSE 80/tcp
 EXPOSE 42000/udp
