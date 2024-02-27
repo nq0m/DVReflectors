@@ -1,7 +1,6 @@
 <?php
 # This is an auto-generated config file!
 # Be careful, when manually editing this!
-#foo
 
 date_default_timezone_set('UTC');
 define("YSFREFLECTORLOGPATH", "/app/logs");
