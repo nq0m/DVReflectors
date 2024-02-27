@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Start Apache
+/etc/init.d/apache2 start
+
 # Disable daemon mode
 sed -i -e "s/Daemon=1/Daemon=0/g" /app/YSFReflector.ini
 
@@ -12,6 +15,7 @@ if [ ${#REFLECTOR_DESCRIPTION} -gt 14 ] ; then echo "REFLECTOR_DESCRIPTION envir
 # Reflector name and description replacement in config file
 sed -i -e "s/Name=.*/Name=${REFLECTOR_NAME}/g" /app/YSFReflector.ini
 sed -i -e "s/Description=.*/Description=${REFLECTOR_DESCRIPTION}/g" /app/YSFReflector.ini
+set -i -e "s/FilePath=.*/FilePath=\/app\/logs/g" /app/YSFReflector.ini
 
 echo "Remember to register your YSFReflector at: https://register.ysfreflector.de"
 
