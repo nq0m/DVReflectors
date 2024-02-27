@@ -24,7 +24,7 @@ RUN apt-get update && \
     mkdir -p /app/logs
 
 COPY --from=builder /code/YSFReflector/YSFReflector.ini /code/YSFReflector/YSFReflector /app/
-COPY --from=builder /dashboard/favicon.ico /dashboard/index.php /dashboard/txinfo.php /dashboard/version.php /var/www/htmo
+COPY --from=builder /dashboard/favicon.ico /dashboard/index.php /dashboard/txinfo.php /dashboard/version.php /var/www/html
 COPY --from=builder /dashboard/include /var/www/html/include
 COPY entrypoint.sh /entrypoint.sh
 COPY config.php /var/www/html/config
