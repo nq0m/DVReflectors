@@ -15,7 +15,7 @@ if [ ${#REFLECTOR_DESCRIPTION} -gt 14 ] ; then echo "REFLECTOR_DESCRIPTION envir
 # Reflector name and description replacement in config file
 sed -i -e "s/Name=.*/Name=${REFLECTOR_NAME}/g" /app/YSFReflector.ini
 sed -i -e "s/Description=.*/Description=${REFLECTOR_DESCRIPTION}/g" /app/YSFReflector.ini
-set -i -e "s/FilePath=.*/FilePath=\/app\/logs/g" /app/YSFReflector.ini
+sed -i -e "s/FilePath=.*/FilePath=\/app\/logs/g" /app/YSFReflector.ini
 
 echo "Remember to register your YSFReflector at: https://register.ysfreflector.de"
 
