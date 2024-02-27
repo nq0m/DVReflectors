@@ -27,7 +27,7 @@ COPY --from=builder /code/YSFReflector/YSFReflector.ini /code/YSFReflector/YSFRe
 COPY --from=builder /dashboard/favicon.ico /dashboard/index.php /dashboard/txinfo.php /dashboard/version.php /var/www/htmo
 COPY --from=builder /dashboard/include /var/www/html/include
 COPY entrypoint.sh /entrypoint.sh
-copy config.php /var/www/html/config
+COPY config.php /var/www/html/config
 
 EXPOSE 80/tcp
 EXPOSE 42000/udp
