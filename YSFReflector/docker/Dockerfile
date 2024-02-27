@@ -21,7 +21,7 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y procps apache2 libapache2-mod-php php-cgi php-common php && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    mkdir /app
+    mkdir -p /app/logs
 
 COPY --from=builder /code/YSFReflector/YSFReflector.ini /code/YSFReflector/YSFReflector /app/
 COPY --from=builder /dashboard/favicon.ico /dashboard/index.php /dashboard/txinfo.php /dashboard/version.php /var/www/htmo
